@@ -86,9 +86,7 @@ const VaultPage = () => {
     }
   };
 
-  const filteredItems = vaultItems.filter((item) =>
-    item.title?.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Removed the filteredItems as filtering is now handled in VaultList component
 
   return (
     <div className="vault-page">
@@ -113,7 +111,8 @@ const VaultPage = () => {
       </header>
 
       <VaultList
-        items={filteredItems}
+        items={vaultItems}
+        query={searchQuery}
         onEdit={(item) => {
           setSelectedItem(item);
           setIsModalOpen(true);
