@@ -58,32 +58,38 @@ function Login({ setIsAuthenticated }) { // ✅ accept prop
   };
 
   return (
-    <div className='container'>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            onChange={handleChange}
-            type='email'
-            name='email'
-            placeholder='Enter your email...'
-            value={loginInfo.email}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            onChange={handleChange}
-            type='password'
-            name='password'
-            placeholder='Enter your password...'
-            value={loginInfo.password}
-          />
-        </div>
-        <button type='submit'>Login</button>
-        <span>Doesn't have an account? <Link to="/signup">Signup</Link></span>
-      </form>
+    <div className='login-container'>
+      <div className='login-form-container'>
+        <h1>Login</h1>
+        <form onSubmit={handleLogin} className='login-form'>
+          <div className='form-group'>
+            <label htmlFor='email'>Email</label>
+            <input
+              onChange={handleChange}
+              type='email'
+              name='email'
+              id='email'
+              placeholder='Enter your email'
+              value={loginInfo.email}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='password'>Password</label>
+            <input
+              onChange={handleChange}
+              type='password'
+              name='password'
+              id='password'
+              placeholder='Enter your password'
+              value={loginInfo.password}
+            />
+          </div>
+          <button type='submit' className='login-button'>Login</button>
+          <div className='signup-link'>
+            Doesn't have an account? <Link to="/signup">Signup</Link>
+          </div>
+        </form>
+      </div>
       <ToastContainer />
     </div>
   );

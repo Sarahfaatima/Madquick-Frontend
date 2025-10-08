@@ -17,6 +17,15 @@ const decrypt = (cipher) => {
 
 export default function VaultList({ items = [], onEdit, onDelete, query = "" }) {
   const [copiedId, setCopiedId] = useState(null);
+  const [visiblePasswords, setVisiblePasswords] = useState({});
+  
+  // Toggle password visibility
+  const togglePasswordVisibility = (itemId) => {
+    setVisiblePasswords(prev => ({
+      ...prev,
+      [itemId]: !prev[itemId]
+    }));
+  };
   
   // Filter items based on search query
   const filteredItems = items.filter(item => {
@@ -211,13 +220,22 @@ export default function VaultList({ items = [], onEdit, onDelete, query = "" }) 
                 <td>{username}</td>
                 <td>
                   <div className="password-container">
-                    <span>{password}</span>
-                    <button 
-                      className={`copy-btn ${isCopied ? 'copied' : ''}`}
-                      onClick={() => copyToClipboard(password, item._id)}
-                    >
-                      {isCopied ? 'Copied!' : 'Copy'}
-                    </button>
+                    <span className="password-text">{visiblePasswords[item._id] ? password : '•'.repeat(password.length)}</span>
+                    <div className="password-actions">
+                      <button 
+                        className="visibility-btn"
+                        onClick={() => togglePasswordVisibility(item._id)}
+                        title={visiblePasswords[item._id] ? "Hide password" : "Show password"}
+                      >
+                        {visiblePasswords[item._id] ? '👁️‍🗨️' : '👁️'}
+                      </button>
+                      <button 
+                        className={`copy-btn ${isCopied ? 'copied' : ''}`}
+                        onClick={() => copyToClipboard(password, item._id)}
+                      >
+                        {isCopied ? 'Copied!' : 'Copy'}
+                      </button>
+                    </div>
                   </div>
                 </td>
                 <td>

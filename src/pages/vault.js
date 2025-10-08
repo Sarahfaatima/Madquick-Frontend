@@ -34,8 +34,21 @@ const VaultPage = () => {
         console.error("Failed to save:", result.message);
         return;
       }
+      
+      // Update state locally instead of fetching all items again
+      if (selectedItem) {
+        // Update existing item
+        setVaultItems(prevItems => 
+          prevItems.map(prevItem => 
+            prevItem._id === result.data._id ? result.data : prevItem
+          )
+        );
+      } else {
+        // Add new item
+        setVaultItems(prevItems => [...prevItems, result.data]);
+      }
+      
       setIsModalOpen(false);
-      fetchVaultItems();
     } catch (err) {
       console.error("Failed to save:", err);
     }
@@ -73,20 +86,26 @@ const VaultPage = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await fetch(`http://localhost:8080/api/delete?id=${id}`, {
+      const response = await fetch(`http://localhost:8080/api/delete?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization: `${token}`,
         },
       });
-      fetchVaultItems();
+      
+      if (response.ok) {
+        // Update state locally instead of fetching all items again
+        setVaultItems(prevItems => prevItems.filter(item => item._id !== id));
+      }
     } catch (err) {
       console.error("Failed to delete item:", err);
     }
   };
 
-  // Removed the filteredItems as filtering is now handled in VaultList component
+  const filteredItems = vaultItems.filter((item) =>
+    item.title?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="vault-page">
@@ -111,8 +130,7 @@ const VaultPage = () => {
       </header>
 
       <VaultList
-        items={vaultItems}
-        query={searchQuery}
+        items={filteredItems}
         onEdit={(item) => {
           setSelectedItem(item);
           setIsModalOpen(true);

@@ -55,45 +55,50 @@ function Signup() {
         }
     }
     return (
-        <div className='container'>
-            <h1>Signup</h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                        onChange={handleChange}
-                        type='text'
-                        name='name'
-                        autoFocus
-                        placeholder='Enter your name...'
-                        value={signupInfo.name}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                        onChange={handleChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter your email...'
-                        value={signupInfo.email}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter your password...'
-                        value={signupInfo.password}
-                    />
-                </div>
-                <button type='submit'>Signup</button>
-                <span>Already have an account ?
-                    <Link to="/login">Login</Link>
-                </span>
-            </form>
+        <div className='signup-container'>
+            <div className='signup-form-container'>
+                <h1>Signup</h1>
+                <form onSubmit={handleSignup} className='signup-form'>
+                    <div className='form-group'>
+                        <label htmlFor='name'>Name</label>
+                        <input
+                            onChange={handleChange}
+                            type='text'
+                            name='name'
+                            id='name'
+                            autoFocus
+                            placeholder='Enter your name'
+                            value={signupInfo.name}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='email'>Email</label>
+                        <input
+                            onChange={handleChange}
+                            type='email'
+                            name='email'
+                            id='email'
+                            placeholder='Enter your email'
+                            value={signupInfo.email}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='password'>Password</label>
+                        <input
+                            onChange={handleChange}
+                            type='password'
+                            name='password'
+                            id='password'
+                            placeholder='Enter your password'
+                            value={signupInfo.password}
+                        />
+                    </div>
+                    <button type='submit' className='signup-button'>Signup</button>
+                    <div className='login-link'>
+                        Already have an account? <Link to="/login">Login</Link>
+                    </div>
+                </form>
+            </div>
             <ToastContainer />
         </div>
     )
