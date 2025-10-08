@@ -1,0 +1,94 @@
+/* Container to center form on screen */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a; /* dark background like vault page */
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+}
+
+/* Form box */
+.container form {
+  background-color: #fff; /* white form box */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 8px 8px 24px rgba(66, 68, 90, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Heading */
+.container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2563eb; /* blue heading like vault buttons */
+}
+
+/* Labels */
+.container label {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+/* Inputs */
+.container input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.container input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+
+/* Button */
+.container button {
+  background-color: #2563eb; /* blue like vault button */
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.container button:hover {
+  background-color: #1e40af;
+}
+
+/* Link text */
+.container span {
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.container span a {
+  color: #2563eb;
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
+.container span a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container form {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,16 @@
+/* SearchBar.css */
+
+.search-bar {
+  width: 16rem; /* w-64 */
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  border: 1px solid #d1d5db; /* border */
+  border-radius: 0.5rem; /* rounded-lg */
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.search-bar:focus {
+  border-color: #2563eb; /* focus:ring-blue-400 */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+}

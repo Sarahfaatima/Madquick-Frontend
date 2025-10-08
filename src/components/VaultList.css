@@ -1,0 +1,83 @@
+/* VaultList.css */
+
+/* Empty state message */
+.vault-empty {
+  text-align: center;
+  margin-top: 2rem;
+  color: #6b7280; /* gray-500 */
+  font-size: 1rem;
+}
+
+/* Table container */
+.vault-table-container {
+  overflow-x: auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table */
+.vault-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Table header */
+.vault-table thead {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #374151; /* gray-700 */
+}
+
+.vault-table th {
+  padding: 0.75rem; /* p-3 */
+}
+
+/* Table body rows */
+.vault-table tbody tr {
+  border-top: 1px solid #e5e7eb;
+  transition: background-color 0.2s;
+}
+
+.vault-table tbody tr:hover {
+  background-color: #f9fafb; /* hover effect */
+}
+
+.vault-table td {
+  padding: 0.75rem;
+  color: #000;
+}
+
+/* Links */
+.vault-table a {
+  color: #2563eb; /* blue-600 */
+  text-decoration: none;
+}
+
+.vault-table a:hover {
+  text-decoration: underline;
+}
+
+/* Action buttons */
+.vault-table .edit-btn {
+  color: #2563eb; /* blue-600 */
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.vault-table .edit-btn:hover {
+  text-decoration: underline;
+}
+
+.vault-table .delete-btn {
+  color: #dc2626; /* red-600 */
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.vault-table .delete-btn:hover {
+  text-decoration: underline;
+}

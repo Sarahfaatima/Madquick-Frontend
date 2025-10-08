@@ -1,0 +1,58 @@
+/* VaultItemCard.css */
+
+.vault-item {
+  border: 1px solid #e5e7eb; /* light border */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded */
+  margin-bottom: 0.75rem; /* mb-3 */
+  background-color: #ffffff; /* bg-white */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-sm */
+}
+
+/* Title and username section */
+.vault-item h3 {
+  font-weight: 600; /* font-semibold */
+  color: #000; /* text-black */
+  margin-bottom: 0.25rem;
+}
+
+.vault-item p {
+  color: #374151; /* text-gray-700 */
+  margin: 0;
+}
+
+/* Action buttons container */
+.vault-actions {
+  display: flex;
+  gap: 0.5rem; /* gap-2 */
+}
+
+/* Edit button */
+.vault-actions .edit-btn {
+  background-color: #2563eb; /* blue-600 */
+  color: #fff;
+  padding: 0.25rem 0.75rem; /* px-3 py-1 */
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.vault-actions .edit-btn:hover {
+  background-color: #1e40af; /* hover effect */
+}
+
+/* Delete button */
+.vault-actions .delete-btn {
+  background-color: #dc2626; /* red-600 */
+  color: #fff;
+  padding: 0.25rem 0.75rem; /* px-3 py-1 */
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.vault-actions .delete-btn:hover {
+  background-color: #b91c1c; /* hover effect */
+}
