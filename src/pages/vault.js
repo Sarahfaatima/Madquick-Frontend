@@ -21,7 +21,7 @@ const VaultPage = () => {
     try {
       const payload = selectedItem ? { ...item, _id: selectedItem._id } : item;
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:8080/api/save-data`, {
+      const res = await fetch(`https://madquick-backend-2.onrender.com/api/save-data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const VaultPage = () => {
       console.log("Fetching vault items...");
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8080/api/fetch-data", {
+      const res = await fetch("https://madquick-backend-2.onrender.com/api/fetch-data", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const VaultPage = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:8080/api/delete?id=${id}`, {
+      const response = await fetch(`https://madquick-backend-2.onrender.com/api/delete?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

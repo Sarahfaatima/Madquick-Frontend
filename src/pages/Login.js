@@ -25,7 +25,7 @@ function Login({ setIsAuthenticated }) { // ✅ accept prop
     }
 
     try {
-      const url = `http://localhost:8080/auth/login`;
+      const url = `https://madquick-backend-2.onrender.com/auth/login`;
       const response = await fetch(url, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
