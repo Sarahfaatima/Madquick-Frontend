@@ -109,6 +109,7 @@ const VaultPage = () => {
 
   return (
     <div className="vault-page">
+    <div className="vault-container">
       <header className="vault-header">
         <h1>Vault</h1>
         <div className="header-actions">
@@ -145,6 +146,7 @@ const VaultPage = () => {
           onSave={handleSave}
         />
       )}
+      </div>
     </div>
   );
 };

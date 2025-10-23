@@ -2,40 +2,62 @@
 
 /* Page container */
 .vault-page {
-  min-height: auto;
-  padding: 1rem;
-  /* width: 100%; */
-  background-color: #000; /* full black background */
-  font-family: Arial, sans-serif;
-  color: #fff; /* default text color white */
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #000;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow-x: hidden; /* ✅ ADDED: prevents horizontal scroll */
+}
+
+/* Main container */
+.vault-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #111;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  overflow-x: auto; /* ✅ ADDED: makes table scrollable instead of whole page */
 }
 
 /* Header styles */
 .vault-header {
   display: flex;
-  justify-content: space-between; /* Vault title left, buttons right */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  border-bottom: 1px solid #333; /* subtle divider */
+  border-bottom: 1px solid #333;
   padding-bottom: 1rem;
+  flex-wrap: wrap; /* ✅ ADDED: prevents overlap on smaller screens */
+  gap: 1rem; /* ✅ ADDED: space between title and buttons */
 }
 
 .vault-header h1 {
   font-size: 2rem;
   font-weight: 600;
-  color: #2563eb; /* Vault title in blue */
+  color: #2563eb;
+  flex: 1; /* ✅ ADDED: makes title take available width */
+  min-width: 200px; /* ✅ ADDED: prevents title shrink on small screens */
 }
 
 /* Header buttons container */
 .vault-header .header-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem; /* 🔹 UPDATED: reduced gap slightly */
   align-items: center;
+  flex-wrap: wrap; /* ✅ ADDED: wraps buttons on small screens */
+  justify-content: flex-end; /* 🔹 UPDATED: keeps alignment to right */
 }
 
 /* Buttons */
 .vault-btn {
-  background-color: #2563eb; /* blue buttons */
+  background-color: #2563eb;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -43,27 +65,38 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s;
+  white-space: nowrap; /* ✅ ADDED: prevents button text wrapping */
 }
 
 .vault-btn:hover {
-  background-color: #1e40af; /* darker blue on hover */
+  background-color: #1e40af;
 }
 
 .vault-btn.refresh:hover {
-  background-color: #1e3a8a; /* slightly different hover for refresh */
+  background-color: #1e3a8a;
+}
+
+.vault-btn.logout {
+  background-color: #dc2626;
+  color: white;
+}
+
+.vault-btn.logout:hover {
+  background-color: #b91c1c;
 }
 
 /* Vault list/table container */
 .vault-table {
   width: 100%;
   margin-top: 2rem;
+  overflow-x: auto; /* ✅ ADDED: ensures only table scrolls horizontally */
 }
 
 /* Modal overlay */
 .vault-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* darker overlay */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,24 +105,17 @@
 
 /* Modal box */
 .vault-modal {
-  background-color: #1f1f1f; /* dark modal */
+  background-color: #1f1f1f;
   border-radius: 0.5rem;
   padding: 1.5rem;
-  width: 24rem;
+  width: 90%; /* ✅ CHANGED: used 90% for smaller screens */
+  max-width: 24rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
   color: #fff;
+  box-sizing: border-box; /* ✅ ADDED: consistent padding sizing */
 }
 
-.vault-btn.logout {
-  background-color: #dc2626; /* red */
-  color: white;
-}
-
-.vault-btn.logout:hover {
-  background-color: #b91c1c; /* darker red on hover */
-}
-
-/* Modal input fields */
+/* Input fields */
 .vault-modal input,
 .vault-modal textarea {
   width: 100%;
@@ -101,7 +127,6 @@
   color: #fff;
 }
 
-/* Placeholder color */
 .vault-modal input::placeholder,
 .vault-modal textarea::placeholder {
   color: #aaa;
@@ -131,4 +156,66 @@
 
 .vault-modal .modal-btn.cancel:hover {
   background-color: #555;
+}
+
+/* -------------------------------- */
+/* 📱 Responsive adjustments */
+/* -------------------------------- */
+
+@media (max-width: 1024px) {
+  .vault-page {
+    padding: 1.5rem; /* 🔹 slightly smaller padding for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .vault-page {
+    padding: 1rem; /* ✅ reduced for smaller screens */
+    text-align: center;
+  }
+
+  .vault-header {
+    flex-direction: column; /* ✅ stacks title and buttons vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .vault-header h1 {
+    font-size: 1.6rem; /* ✅ smaller title for mobile */
+  }
+
+  .vault-header .header-actions {
+    justify-content: center; /* ✅ center buttons */
+  }
+
+  .vault-btn {
+    font-size: 0.9rem; /* ✅ slightly smaller buttons */
+    padding: 0.4rem 0.8rem; /* ✅ adjusted padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .vault-page {
+    padding: 0.8rem; /* ✅ tighter padding for mobile */
+    font-size: 0.9rem;
+  }
+
+  .vault-container {
+    padding: 0.8rem; /* ✅ smaller padding */
+    border-radius: 8px; /* ✅ smoother corner for phones */
+  }
+
+  .vault-header h1 {
+    font-size: 1.4rem; /* ✅ smaller heading */
+  }
+
+  .vault-btn {
+    width: 100%; /* ✅ full-width buttons for mobile */
+    padding: 0.6rem;
+  }
+
+  .vault-header .header-actions {
+    width: 100%; /* ✅ ensures alignment */
+    justify-content: center;
+  }
 }
